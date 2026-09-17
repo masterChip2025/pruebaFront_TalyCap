@@ -8,37 +8,59 @@
     <div class="spinner-container">
       <mat-spinner diameter="50"></mat-spinner>
     </div>
+  } @else {
+    <table mat-table [dataSource]="movieDataSource">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let movie">{{ movie.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="releaseDate">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let movie">{{ movie.releaseDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef>Rating</th>
+        <td mat-cell *matCellDef="let movie">{{ movie.rating }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="poster">
+        <th mat-header-cell *matHeaderCellDef>Póster</th>
+        <td mat-cell *matCellDef="let movie"><img [src]="movie.poster" /></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="movieColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: movieColumns"></tr>
+    </table>
+
+    <!--
+    <table mat-table [dataSource]="weatherDataSource" style="margin-top: 2rem">
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>Ciudad</th>
+        <td mat-cell *matCellDef="let weather">{{ weather.city }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="temperature">
+        <th mat-header-cell *matHeaderCellDef>Temperatura</th>
+        <td mat-cell *matCellDef="let weather">{{ weather.temperature }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="condition">
+        <th mat-header-cell *matHeaderCellDef>Condicion</th>
+        <td mat-cell *matCellDef="let weather">{{ weather.condition }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef>Icono</th>
+        <td mat-cell *matCellDef="let weather"><img [src]="weather.icon" /></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="weatherColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: weatherColumns"></tr>
+    </table>
+  -->
   }
-
-  <table mat-table [dataSource]="movieDataSource">
-    <!-- 1. Debe llamarse 'title' -->
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Título</th>
-      <td mat-cell *matCellDef="let movie">{{ movie.title }}</td>
-    </ng-container>
-
-    <!-- 2. Debe llamarse 'releaseDate' (¡ojo con la D mayúscula!) -->
-    <ng-container matColumnDef="releaseDate">
-      <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let movie">{{ movie.releaseDate }}</td>
-    </ng-container>
-
-    <!-- 3. Debe llamarse 'rating' -->
-    <ng-container matColumnDef="rating">
-      <th mat-header-cell *matHeaderCellDef>Rating</th>
-      <td mat-cell *matCellDef="let movie">{{ movie.rating }}</td>
-    </ng-container>
-
-    <!-- 4. Debe llamarse 'poster' -->
-    <ng-container matColumnDef="poster">
-      <th mat-header-cell *matHeaderCellDef>Póster</th>
-      <td mat-cell *matCellDef="let movie"><img [src]="movie.poster" /></td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="movieColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: movieColumns"></tr>
-  </table>
-
   <!--
   <mat-tab-group (selectedIndexChange)="onTabChange($event)">
     <!-- PESTAÑA PELÍCULAS 
