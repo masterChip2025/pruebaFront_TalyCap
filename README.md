@@ -1,27 +1,53 @@
-# PruebaFrontTalyCap
+# Dashboard de Películas y Clima - Prueba Técnica Angular v18+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+Este proyecto es una aplicación Web responsiva desarrollada en **Angular 18** utilizando componentes autónomos (**Standalone Components**), **Angular Material** para la interfaz gráfica y un esquema de tipado fuerte en TypeScript. Consume de manera estructurada servicios simulando arquitecturas asíncronas reales.
 
-## Development server
+## 🛠️ Características Implementadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Standalone Components:** Arquitectura modular moderna sin herencia de NgModule.
+- **Tabs Interactivos:** Alternancia fluida entre datasets de Películas y Clima mundial.
+- **DataTables Avanzadas:** Tablas reactivas con paginación integrada y ordenamiento lógico.
+- **Filtros Globales:** Caja de búsqueda funcional en tiempo real para localizar registros por nombre o ciudad.
+- **Manejo de Estados:** Feedback visual de carga (`mat-spinner`) y control de errores interactivo mediante `mat-snackbar`.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Instalación y Despliegue Local
 
-## Build
+Sigue estos sencillos pasos para clonar y ejecutar el entorno en tu máquina de desarrollo.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 1. Requisitos Previos
 
-## Running unit tests
+Asegúrate de contar con las siguientes herramientas globales instaladas:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Node.js](https://nodejs.org) (Versión v18.x o v20.x recomendada)
+- [Angular CLI](https://angular.dev) instalado globalmente (`npm install -g @angular/cli`)
 
-## Running end-to-end tests
+### 2. Descargar Dependencias
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Navega a la carpeta raíz del proyecto clonado e instala los paquetes necesarios de Node y Angular Material:
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 3. Servir en Local
+
+Arranca la aplicación mediante el servidor de desarrollo local de Angular:
+
+```bash
+ng serve
+```
+
+Una vez finalizada la compilación, abre tu explorador web en la dirección:
+👉 **`http://localhost:4200`**
+
+---
+
+## 🧪 Pruebas Unitarias (Tests)
+
+Para validar el correcto comportamiento de la lógica de componentes y flujos de inyección, ejecuta:
+
+```bash
+ng test
+```

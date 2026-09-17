@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Movie } from '../../core/models/movie.model';
 import { Observable, of } from 'rxjs';
 import { delay, catchError } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
   private http = inject(HttpClient);
+  private platformId = inject(PLATFORM_ID);
 
   private mockMovies: Movie[] = [
     {
@@ -52,7 +54,11 @@ export class MovieService {
 
   getMovies(): Observable<Movie[]> {
     // Simulamos el retraso de red de un HttpClient real
-    return of(this.mockMovies).pipe(
+    const movies$ = of(this.mockMovies);
+    if (!isPlatformBrowser(this.platformId)) {
+      return movies$;
+    }
+    return movies$.pipe(
       delay(800),
       catchError((error) => {
         console.error('Error cargando películas', error);

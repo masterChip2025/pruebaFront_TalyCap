@@ -1,0 +1,44 @@
+.container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Roboto, sans-serif;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.tab-content {
+  padding: 16px 0;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.poster-img {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+  padding: 4px 0;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
