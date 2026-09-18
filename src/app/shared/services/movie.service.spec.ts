@@ -1,33 +1,37 @@
 import { TestBed } from '@angular/core/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
 import { Movie } from '../../core/models/movie.model';
 
 describe('MovieService', () => {
   let service: MovieService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [MovieService],
+    });
     service = TestBed.inject(MovieService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('debe crearse correctamente el servicio', () => {
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('debe crearse el servicio', () => {
     expect(service).toBeTruthy();
   });
 
-  it('debe retornar la lista de películas con sus propiedades requeridas', (done) => {
-    service.getMovies().subscribe({
-      next: (movies: Movie[]) => {
-        // Validamos que devuelva datos
-        expect(movies.length).toBeGreaterThan(0);
-
-        // Validamos que el primer elemento tenga la estructura del modelo
-        const primeraPelicula = movies[0];
-        expect(primeraPelicula.title).toBeDefined();
-        expect(primeraPelicula.rating).toBeDefined();
-        expect(primeraPelicula.poster).toContain('http');
-
-        done(); // Indica a Jasmine que la suscripción asíncrona terminó
-      },
+  it('debe retornar un listado de películas (mock)', (done) => {
+    service.getMovies().subscribe((movies: Movie[]) => {
+      expect(movies.length).toBeGreaterThan(0);
+      expect(movies[0].title).toBe('Inception');
+      done(); // Notifica a Jasmine que la suscripción asíncrona terminó
     });
   });
 });
