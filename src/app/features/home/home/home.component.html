@@ -9,6 +9,18 @@
       <mat-spinner diameter="50"></mat-spinner>
     </div>
   } @else {
+    <div class="search-container">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Buscar películas...</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          (input)="applyFilter($event, 'movie')"
+          placeholder="Ej. Inception"
+          #movieInput
+        />
+      </mat-form-field>
+    </div>
     <table mat-table [dataSource]="movieDataSource">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Título</th>
@@ -33,6 +45,14 @@
       <tr mat-header-row *matHeaderRowDef="movieColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: movieColumns"></tr>
     </table>
+    <mat-paginator
+      #moviePaginator
+      [pageSizeOptions]="[2, 5, 10]"
+      pageSize="2"
+      showFirstLastButtons
+      aria-label="Seleccionar página de películas"
+    >
+    </mat-paginator>
 
     <!--
     <table mat-table [dataSource]="weatherDataSource" style="margin-top: 2rem">

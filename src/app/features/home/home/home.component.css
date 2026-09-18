@@ -12,6 +12,7 @@ header {
 .full-width {
   width: 100%;
   margin-bottom: 16px;
+  color: red;
 }
 
 .tab-content {
@@ -41,4 +42,8 @@ table {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
+}
+
+.search-container {
+  background-color: darkslategrey;
 }

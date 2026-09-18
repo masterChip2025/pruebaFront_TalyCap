@@ -81,6 +81,13 @@ export class HomeComponent implements OnInit {
         next: ({ movies, weather }) => {
           this.movieDataSource.data = movies;
           this.weatherDataSource.data = weather;
+
+          this.movieDataSource.filterPredicate = (
+            data: Movie,
+            filter: string,
+          ) => {
+            return data.title.toLowerCase().includes(filter);
+          };
         },
         error: (err) => {
           this.snackBar.open(
